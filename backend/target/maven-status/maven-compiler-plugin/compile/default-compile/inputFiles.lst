@@ -1,30 +1,31 @@
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\security\JwtService.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\model\Role.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\model\AuditLog.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\BackendApplication.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\repository\CheckInRepository.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\repository\SharedGoalRepository.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\controller\NotificationController.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\service\AuditAspect.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\model\CycleConfig.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\model\SharedGoal.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\controller\AuthController.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\service\InsightService.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\security\JwtAuthFilter.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\controller\AdminController.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\repository\AuditLogRepository.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\model\User.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\security\DatabaseSeeder.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\model\CheckIn.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\repository\CycleConfigRepository.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\controller\GoalController.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\controller\ReportController.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\repository\GoalRepository.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\controller\ManagerController.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\model\Goal.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\repository\UserRepository.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\service\GoalService.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\repository\NotificationRepository.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\model\Notification.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\service\NotificationScheduler.java
-C:\Users\samud\Downloads\House goal\backend\src\main\java\com\goalsphere\security\SecurityConfig.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\controller\ReportController.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\repository\CycleConfigRepository.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\controller\NotificationController.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\repository\SharedGoalRepository.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\repository\UserRepository.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\security\JwtAuthFilter.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\service\AuditAspect.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\model\Goal.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\model\CycleConfig.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\controller\ForwardingController.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\repository\AuditLogRepository.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\security\DatabaseSeeder.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\BackendApplication.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\model\User.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\model\AuditLog.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\repository\GoalRepository.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\service\InsightService.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\repository\CheckInRepository.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\repository\NotificationRepository.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\model\Notification.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\model\CheckIn.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\model\Role.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\model\SharedGoal.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\security\JwtService.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\controller\AdminController.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\controller\GoalController.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\security\SecurityConfig.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\service\NotificationScheduler.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\controller\ManagerController.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\service\GoalService.java
+C:\Users\samud\Downloads\Goalsphere\backend\src\main\java\com\goalsphere\controller\AuthController.java

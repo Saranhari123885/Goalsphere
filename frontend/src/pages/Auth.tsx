@@ -76,10 +76,16 @@ export default function Auth() {
       else if (normalizedRole === 'manager') navigate('/manager/dashboard');
       else navigate('/employee/dashboard');
     } catch (err: any) {
-      if (err.response && err.response.data && typeof err.response.data === 'string') {
+      if (err.code === 'ERR_NETWORK') {
+        setError('Cannot connect to server. Is the backend running?');
+      } else if (isRegistering && err.response?.status === 500) {
+        setError('Registration failed. This email might already be taken.');
+      } else if (err.response?.data && typeof err.response.data === 'string') {
         setError(err.response.data);
+      } else if (err.response?.data?.message) {
+        setError(err.response.data.message);
       } else {
-        setError('Invalid email or password.');
+        setError(isRegistering ? 'Registration failed. Please try again.' : 'Invalid email or password.');
       }
     } finally {
       setIsLoading(false);
