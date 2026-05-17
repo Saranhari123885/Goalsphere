@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Target, Users, CheckCircle2, Clock, ShieldAlert, FileText, Zap, Loader2 } from 'lucide-react'
 import ExecutiveGlobe from '@/three/ExecutiveGlobe'
 import { useState, useEffect } from 'react'

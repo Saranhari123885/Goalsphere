@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
-import { Settings, Bell, FileText, Users, Target, Activity, CheckCircle, Database, Loader2, Check, Clock } from 'lucide-react'
+import { Settings, Bell, FileText, Users, Target, CheckCircle, Database, Loader2, Check, Clock } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { Progress } from '@/components/ui/progress'
 import api from '../api/client'
