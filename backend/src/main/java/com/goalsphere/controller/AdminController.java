@@ -8,6 +8,7 @@ import com.goalsphere.repository.UserRepository;
 import com.goalsphere.repository.AuditLogRepository;
 import com.goalsphere.repository.CycleConfigRepository;
 import com.goalsphere.repository.GoalRepository;
+import com.goalsphere.service.InsightService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,12 @@ public class AdminController {
     private final AuditLogRepository auditLogRepository;
     private final CycleConfigRepository cycleConfigRepository;
     private final GoalRepository goalRepository;
+    private final InsightService insightService;
+
+    @GetMapping("/insights")
+    public ResponseEntity<List<String>> getInsights() {
+        return ResponseEntity.ok(insightService.generateHeuristicInsights());
+    }
 
     @GetMapping("/users")
     public ResponseEntity<List<User>> getAllUsers() {

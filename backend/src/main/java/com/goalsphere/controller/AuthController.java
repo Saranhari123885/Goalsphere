@@ -3,9 +3,12 @@ package com.goalsphere.controller;
 import com.goalsphere.model.Role;
 import com.goalsphere.model.User;
 import com.goalsphere.repository.UserRepository;
+import com.goalsphere.repository.AuditLogRepository;
+import com.goalsphere.model.AuditLog;
 import com.goalsphere.security.JwtService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import java.time.LocalDateTime;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,6 +23,7 @@ import java.util.Map;
 public class AuthController {
 
     private final UserRepository repository;
+    private final AuditLogRepository auditLogRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -40,6 +44,13 @@ public class AuthController {
             extraClaims.put("role", user.getRole().name());
             
             var jwtToken = jwtService.generateToken(extraClaims, user);
+            
+            AuditLog auditLog = new AuditLog();
+            auditLog.setAction("USER_REGISTERED");
+            auditLog.setNewValue(user.getEmail() + " registered as " + user.getRole().name());
+            auditLog.setTimestamp(LocalDateTime.now());
+            auditLogRepository.save(auditLog);
+            
             return ResponseEntity.ok(new AuthResponse(jwtToken, user.getId(), user.getRole().name()));
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Registration failed. Email might already exist.");
@@ -60,6 +71,13 @@ public class AuthController {
             extraClaims.put("role", user.getRole().name());
             
             var jwtToken = jwtService.generateToken(extraClaims, user);
+            
+            AuditLog auditLog = new AuditLog();
+            auditLog.setAction("USER_LOGIN");
+            auditLog.setNewValue(user.getEmail() + " logged in");
+            auditLog.setTimestamp(LocalDateTime.now());
+            auditLogRepository.save(auditLog);
+            
             return ResponseEntity.ok(new AuthResponse(jwtToken, user.getId(), user.getRole().name()));
         } catch (org.springframework.security.core.AuthenticationException e) {
             return ResponseEntity.status(401).body("Invalid email or password.");

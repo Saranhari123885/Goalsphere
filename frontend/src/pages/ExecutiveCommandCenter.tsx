@@ -2,24 +2,39 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Target, Users, CheckCircle2, Clock, ShieldAlert, FileText, Zap, Loader2 } from 'lucide-react'
 import ExecutiveGlobe from '@/three/ExecutiveGlobe'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import api from '../api/client'
 
 export default function ExecutiveCommandCenter() {
+  const navigate = useNavigate()
   const [activeAction, setActiveAction] = useState<string | null>(null)
   
   const [stats, setStats] = useState({ totalGoals: 0, employees: 0, pending: 0, escalations: 0, avgCompletion: 0 })
+  const [insights, setInsights] = useState<string[]>([])
+  const [cycleStatus, setCycleStatus] = useState('Loading...')
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const fetchOrgData = async () => {
       try {
-        const [goalsRes, usersRes] = await Promise.all([
+        const [goalsRes, usersRes, insightsRes, cyclesRes] = await Promise.all([
           api.get('/reports/summary'),
-          api.get('/admin/users')
+          api.get('/admin/users'),
+          api.get('/admin/insights'),
+          api.get('/admin/cycle-configs')
         ]);
         
         const goals = goalsRes.data;
         const users = usersRes.data;
+        
+        if (insightsRes && insightsRes.data) {
+           setInsights(insightsRes.data);
+        }
+        
+        if (cyclesRes && cyclesRes.data) {
+           const activeCycle = cyclesRes.data.find((c: any) => c.active);
+           setCycleStatus(activeCycle ? `${activeCycle.quarter} Active` : 'No Active Cycle');
+        }
 
         let pending = 0;
         let totalProgress = 0;
@@ -50,8 +65,13 @@ export default function ExecutiveCommandCenter() {
 
   const handleAdminAction = async (action: string) => {
     setActiveAction(action)
-    await new Promise(resolve => setTimeout(resolve, 800))
+    await new Promise(resolve => setTimeout(resolve, 400))
     setActiveAction(null)
+    
+    if (action === 'cycles') navigate('/admin/cycle-mgt');
+    if (action === 'unlock') navigate('/admin/unlock-goals');
+    if (action === 'audit') navigate('/admin/audit-logs');
+    if (action === 'kpi') navigate('/admin/settings');
   }
 
   return (
@@ -101,7 +121,7 @@ export default function ExecutiveCommandCenter() {
           <CardContent className="p-4 flex flex-col items-center justify-center text-center">
             <FileText className="w-8 h-8 text-fuchsia-400 mb-2" />
             <p className="text-xs text-slate-400">Cycle Status</p>
-            <h3 className="text-lg font-bold text-white">Q3 Active</h3>
+            <h3 className="text-lg font-bold text-white">{cycleStatus}</h3>
           </CardContent>
         </Card>
       </div>
@@ -120,18 +140,18 @@ export default function ExecutiveCommandCenter() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="p-3 rounded bg-red-500/10 border border-red-500/20 text-sm">
-                <span className="font-bold text-red-400">Alert: </span>
-                Completion dropped 15% from Q1 in the Sales department.
-              </div>
-              <div className="p-3 rounded bg-yellow-500/10 border border-yellow-500/20 text-sm">
-                <span className="font-bold text-yellow-400">Warning: </span>
-                Three key managers have significantly delayed approvals.
-              </div>
-              <div className="p-3 rounded bg-green-500/10 border border-green-500/20 text-sm">
-                <span className="font-bold text-green-400">Success: </span>
-                Engineering is 12% ahead of schedule on Q2 deliverables.
-              </div>
+              {isLoading ? (
+                <div className="flex justify-center p-4"><Loader2 className="w-6 h-6 animate-spin text-brand-500" /></div>
+              ) : insights.length === 0 ? (
+                <div className="text-sm text-slate-400">No insights available at this time.</div>
+              ) : (
+                insights.map((insight, idx) => (
+                  <div key={idx} className="p-3 rounded bg-brand-500/10 border border-brand-500/20 text-sm">
+                    <span className="font-bold text-brand-400">Insight: </span>
+                    {insight}
+                  </div>
+                ))
+              )}
             </CardContent>
           </Card>
 
